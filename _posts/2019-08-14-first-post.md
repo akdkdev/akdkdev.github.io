@@ -1,29 +1,60 @@
 ---
-title:  "Exclude Post from Search Index"
-search: false
-categories: 
-  - Jekyll
-last_modified_at: 2018-02-19T08:05:34-05:00
+title: "Layout: Header Video"
+header:
+  video:
+    id: XsxDH4HcOWA
+    provider: youtube
+categories:
+  - Layout
+  - Uncategorized
+tags:
+  - video
+  - layout
 ---
 
-This post should not appear in the search index because it has the following YAML Front Matter:
+This post should display a **header with a responsive video**, if the theme supports it.
 
-```yaml
-search: false
+## Settings
+
+| Parameter  | Required     | Description |
+|----------  |---------     | ----------- |
+| `id`       | **Required** | ID of the video |
+| `provider` | **Required** | Hosting provider of the video, either `youtube` or `vimeo` |
+
+### YouTube
+
+To embed the following YouTube video at url `https://www.youtube.com/watch?v=XsxDH4HcOWA` (long version) or `https://youtu.be/XsxDH4HcOWA` (short version) into a post or page's main content you'd use: 
+
+```liquid
+{% raw %}{% include video id="XsxDH4HcOWA" provider="youtube" %}{% endraw %}
 ```
 
-**Note:** `search: false` only works to exclude posts when using **Lunr** as a search provider.
-{: .notice--info}
+{% include video id="XsxDH4HcOWA" provider="youtube" %}
 
-To exclude files when using **Algolia** as a search provider add an array to `algolia.files_to_exclude` in your `_config.yml`. For more configuration options be sure to check their [full documentation](https://community.algolia.com/jekyll-algolia/options.html).
+To embed it as a video header you'd use the following YAML Front Matter
 
 ```yaml
-algolia:
-  # Exclude more files from indexing
-  files_to_exclude:
-    - index.html
-    - index.md
-    - excluded-file.html
-    - _posts/2017-11-28-post-exclude-search.md
-    - subdirectory/*.html
+header:
+  video:
+    id: XsxDH4HcOWA
+    provider: youtube
+```
+
+### Vimeo
+
+To embed the following Vimeo video at url `https://vimeo.com/212731897` into a post or page's main content you'd use: 
+
+```liquid
+{% raw %}{% include video id="212731897" provider="vimeo" %}{% endraw %}
+```
+
+{% include video id="212731897" provider="vimeo" %}
+
+To embed it as a video header you'd use the following YAML Front Matter
+
+```yaml
+header:
+  video:
+    id: 212731897
+    provider: vimeo
 ```
